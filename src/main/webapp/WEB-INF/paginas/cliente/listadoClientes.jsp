@@ -1,12 +1,6 @@
-<%-- 
-    Document   : listadoClientes
-    Created on : 11 jul 2023, 17:09:23
-    Author     : z0s0xp
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<ftm:setLocale value="es_MX"/>
-
+<fmt:setLocale value="es_MX"/>
 
 <section id="clientes">
     <div class="container">
@@ -26,12 +20,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!--Se itera cada elemento de la lista de clientes -->
+                            <!-- Iteramos cada elemento de la lista de clientes -->
                             <c:forEach var="cliente" items="${clientes}" varStatus="status" >
                                 <tr>
                                     <td>${status.count}</td>
                                     <td>${cliente.nombre} ${cliente.apellido}</td>
-                                    <td><fmt:formatNumber value="${cliente.saldo}" type="currency"/></td>
+                                    <td> <fmt:formatNumber value="${cliente.saldo}" type="currency"/> </td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idCliente=${cliente.idCliente}"
                                            class="btn btn-secondary">
@@ -44,30 +38,32 @@
                     </table>
                 </div>
             </div>
-            <!-- Tarjetas para los totales -->
+
+            <!--Inicio Tarjetas para los totales-->
             <div class="col-md-3">
-                <div class="card text-center bg-danger text-white mb-3 ">
+                <div class="card text-center bg-danger text-white mb-3">
                     <div class="card-body">
                         <h3>Saldo Total</h3>
                         <h4 class="display-4">
-                            <fmt:formatNumber value="${saldoTotal}" type="currency"/>
+                            <fmt:formatNumber value="${saldoTotal}" type="currency" />
                         </h4>
                     </div>
                 </div>
-                        <div class="card text-center bg-success text-white mb-3">
-                            <div class="card-body">
-                                <h3>Total Clientes</h3>
-                                <h4 class="display-4">
-                                    <i class="fas fa-users"></i>${totalClientes}
-                                </h4>
-                            </div>
-                </div>
+
+                <div class="card text-center bg-success text-white mb-3">
+                    <div class="card-body">
+                        <h3>Total Clientes</h3>
+                        <h4 class="display-4">
+                            <i class="fas fa-users"></i> ${totalClientes}
+                        </h4>
+                    </div>
+                </div>        
             </div>
-            <!-- Tarjetas para los totales -->
+            <!--Fin Tarjetas para los totales-->
         </div>
     </div>
 </section>
 
-  <!-- Agregar cliente Modal -->
-  
-  <jsp:include page="/WEB-INF/paginas/cliente/agregarCliente.jsp"/>
+<!-- Agregar cliente MODAL -->
+<jsp:include page="/WEB-INF/paginas/cliente/agregarCliente.jsp"/>
+                        
