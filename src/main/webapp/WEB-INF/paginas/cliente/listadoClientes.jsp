@@ -27,13 +27,13 @@
                         </thead>
                         <tbody>
                             <!--Se itera cada elemento de la lista de clientes -->
-                            <c:forEach var="cliente" items="${clientes}" >
+                            <c:forEach var="cliente" items="${clientes}" varStatus="status" >
                                 <tr>
-                                    <td>${cliente.idCliente}</td>
+                                    <td>${status.count}</td>
                                     <td>${cliente.nombre} ${cliente.apellido}</td>
                                     <td><fmt:formatNumber value="${cliente.saldo}" type="currency"/></td>
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idCliente=${idCliente}"
+                                        <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idCliente=${cliente.idCliente}"
                                            class="btn btn-secondary">
                                             <i class="fas fa-angle-double-right"></i> Editar
                                         </a>
@@ -67,3 +67,7 @@
         </div>
     </div>
 </section>
+
+  <!-- Agregar cliente Modal -->
+  
+  <jsp:include page="/WEB-INF/paginas/cliente/agregarCliente.jsp"/>
